@@ -1,0 +1,47 @@
+export const products = [
+  {
+    barcode: "024000010920",
+    id: "1",
+    image_src: require("../assets/images/024000010920.jpeg"),
+    name: "Del Monte Fruit Cocktail Imported 822g",
+    price: 176,
+    quantity: 3,
+  },
+  {
+    barcode: "037600240345",
+    id: "2",
+    image_src: require("../assets/images/037600240345.png"),
+    name: "Spam Luncheon Meat 25% Less sodium 340g",
+    price: 218,
+    quantity: 4,
+  },
+  {
+    barcode: "089686170726",
+    id: "3",
+    image_src: require("../assets/images/089686170726.jpg"),
+    name: "Indomie Noodles Mi Goreng Original 85g",
+    price: 18.6,
+  },
+  {
+    barcode: "014285003045",
+    id: "4",
+    image_src: require("../assets/images/014285003045.png"),
+    name: "UFC Catsup Banana 1kg",
+    price: 70,
+    quantity: 3,
+  },
+  {
+    barcode: "4800249002867",
+    id: "5",
+    image_src: require("../assets/images/4800249002867.jpg"),
+    name: "CDO Ham Holiday 1kg",
+    price: 580,
+  },
+  {
+    barcode: "4800575142428",
+    id: "6",
+    image_src: require("../assets/images/4800575142428.jpg"),
+    name: "Krem-top Creamer 450g",
+    price: 93.45,
+  },
+]

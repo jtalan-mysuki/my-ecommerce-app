@@ -1,11 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { useDispatch } from 'react-redux'
+
+import { setCartItems } from '../../redux/slice/productSlice'
 
 import productItemStyles from './styles'
 
 const ProductItem = ({ item }) => {
   const { name, price, image_src, quantity } = item
-  const [count, setCount] = useState(quantity)
+  const [count, setCount] = useState(quantity || 0)
+
+  const dispatch = useDispatch();
 
   const handleStepper = (action) => {
     if (action === 'increment') {
@@ -13,18 +18,12 @@ const ProductItem = ({ item }) => {
     } else {
       setCount(count => count  - 1)
     }
+    dispatch(setCartItems({id: item.id, quantity: count}))
   }
 
   const renderStepperOption = ({text, action}) => {
     return (
-      <TouchableOpacity onPress={() => handleStepper(action)} style={{
-        borderWidth: .5, 
-        borderColor: 'black', 
-        borderRadius: 5,
-        height: 20,
-        width: 20,
-        alignItems: 'center',
-        }}>
+      <TouchableOpacity onPress={() => handleStepper(action)} style={productItemStyles.productCountOption}>
         <Text>{text}</Text>
       </TouchableOpacity>
     )
@@ -52,14 +51,9 @@ const ProductItem = ({ item }) => {
 
   const renderProductCount = (count) => {
     return (
-      <View style={{
-        alignSelf: 'flex-end', 
-        flexDirection: 'row', 
-        width: '30%', 
-        justifyContent: 'space-around',
-        }}>
+      <View style={productItemStyles.productCountStepper}>
           {renderStepperOption({text: '-', action: 'decrement'})}
-          <Text>{count || 0}</Text>
+          <Text>{count}</Text>
           {renderStepperOption({text: '+', action: 'increment'})}
       </View>
     )
@@ -69,6 +63,7 @@ const ProductItem = ({ item }) => {
     <View style={productItemStyles.productItem}>
       {/* image */}
       {renderProductImage()}
+      
       {/* product info */}
       <View style={productItemStyles.productInfo}>
         {renderProductInfo()}

@@ -14,6 +14,20 @@ const styles = StyleSheet.create({
   productInfo: {
     flex: .7,
     alignItems: 'flex-start',
+  },
+  productCountOption: {
+    borderWidth: .5, 
+    borderColor: 'black', 
+    borderRadius: 5,
+    height: 20,
+    width: 20,
+    alignItems: 'center',
+  },
+  productCountStepper: {
+    alignSelf: 'flex-end', 
+    flexDirection: 'row', 
+    width: '30%', 
+    justifyContent: 'space-around',
   }
 });
 

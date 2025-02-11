@@ -1,24 +1,32 @@
-import { Text, View } from "react-native";
+import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 
 import styles from "../styles";
 
 import { products } from "../mocks/products";
+import ProductItem from "../components/Products/ProductItem";
 
 export default function ProductsScreen () {
+  const renderViewCartButton = () => {
+    return (
+      <View style={styles.viewCardButtonWrapper}>
+        <TouchableOpacity style={styles.viewCartButton}>
+          <Text style={styles.viewCartButtonTitle}>View Cart</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        {"Instruction"}
-      </Text>
-      <Text>
-        {"1. Display the products here according to the specs."}
-      </Text>
-      <Text>
-        {"2. Each product element should have an input stepper that adds or subtracts quantity to the cart."}
-      </Text>
-      <Text>
-        {"3. Display a button that is fixed at the bottom which navigates to the cart screen."}
-      </Text>
+      <ScrollView 
+        style={styles.productListWrapper} 
+        contentContainerStyle={styles.scrollViewContentContainer}
+      >
+        {products.map((product) => { 
+          return <ProductItem key={product.id} item={product} />
+        })}
+        {renderViewCartButton()}
+      </ScrollView>
     </View>
   )
 }
